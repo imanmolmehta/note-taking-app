@@ -4,15 +4,17 @@ const theme = {
         background: '#0c0c0d',
         cardBackground: '#181819',
         headerBackground: '#2b2b2c',
-        fontColor: '#eaeaea',
+        font: '#eaeaea',
+        muted: '#757575'
     },
     fonts: {
         large: 30,
-        medium: 18,
-        small: 14,
+        medium: 16,
+        small: 12,
+        xs: 10,
         fontFamily: 'Roboto'
     },
-    boxShadow:{
+    boxShadow: {
         shadowOffset: {
             width: 0,
             height: 2

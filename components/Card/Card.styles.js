@@ -4,9 +4,13 @@ import theme from "../../theme/theme";
 const styles = StyleSheet.create({
   card: {
     backgroundColor: theme.colors.cardBackground,
-    borderRadius: 10,
+    borderRadius: 20,
     margin: 5,
-    paddingVertical: 20,
+    paddingVertical: 15,
+    paddingHorizontal: 15,
+    minHeight: '30%',
+    borderColor: theme.colors.headerBackground,
+    borderWidth: 1
   }
 });
 

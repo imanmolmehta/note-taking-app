@@ -17,11 +17,11 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 22,
     fontFamily: theme.fonts.fontFamily,
-    color: theme.colors.fontColor
+    color: theme.colors.font
   },
 
   headerIcon: {
-    color: theme.colors.fontColor
+    color: theme.colors.font
   }
 });
 
