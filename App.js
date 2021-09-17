@@ -1,19 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import Header from './components/Header/Header';
-import theme from './theme/theme';
+import NotesList from './components/NotesList/NotesList';
+import styles from './global-styles';
 
 export default function App() {
   return (
     <View style={styles.screen}>
       <Header />
+      <NotesList />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    backgroundColor: theme.colors.background,
-  },
-});
