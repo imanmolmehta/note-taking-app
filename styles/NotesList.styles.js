@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native";
-import theme from "../../theme/theme";
+import theme from "../theme/theme";
 
 const styles = StyleSheet.create({
 
     listContainer: {
-        paddingVertical: 10
+        paddingVertical: 10,
+        flex: 1
     },
 
     item: {
@@ -32,7 +33,10 @@ const styles = StyleSheet.create({
     },
 
     itemTime: {
-        paddingTop: 10,
+        paddingTop: 20,
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        width: '100%'
     },
 
     timeText: {

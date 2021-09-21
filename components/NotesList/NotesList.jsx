@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import Card from '../Card/Card';
-import styles from './NotesList.styles';
+import styles from '../../styles/NotesList.styles';
 import MasonryList from '@react-native-seoul/masonry-list';
 import { http } from '../../config/httpConfig';
 import moment from 'moment';
+import { Icon } from 'react-native-elements';
 
 class NotesList extends Component {
   constructor(props) {
@@ -36,18 +37,28 @@ class NotesList extends Component {
   }
 
   renderItem = (item) => {
-    const stringConcatLength = 50;
+    const headerLength = 15;
+    const bodyLength = 45;
     return (
-      <TouchableOpacity onPress={() => this.getNote(item._id)}>
-        <Card key={item._id} style={styles.item}>
+      <TouchableOpacity key={item._id} activeOpacity={0.5} onPress={() => this.getNote(item._id)}>
+        <Card style={styles.item}>
           <View style={styles.itemHeader}>
-            <Text style={styles.headerText}>{item.title}</Text>
+            <Text style={styles.headerText}>{item.title.length < headerLength ? item.title : item.title.substring(0, headerLength) + '...'}</Text>
           </View>
           <View style={styles.itemBody}>
-            <Text style={styles.bodyText}>{item.body.length < stringConcatLength ? item.body : item.body.substring(0, stringConcatLength) + ' ...'}</Text>
+            <Text style={styles.bodyText}>{item.body.length < bodyLength ? item.body : item.body.substring(0, bodyLength) + ' ...'}</Text>
           </View>
           <View style={styles.itemTime}>
             <Text style={styles.timeText}>{moment(item.updatedAt).format('DD MMM HH:mm A')}</Text>
+            {
+              item.isPinned
+              ?
+              <View>
+                <Icon name="pin" type="material-community" size={20} color={ item.isPinned ? 'gold' : '' } />
+              </View>
+              :
+              <></>
+            }
           </View>
         </Card>
       </TouchableOpacity>
@@ -56,7 +67,7 @@ class NotesList extends Component {
 
   render() {
     return (
-      <SafeAreaView>
+      <ScrollView>
         <MasonryList
           onRefresh={this.getNotes}
           refreshing={this.state.isLoading}
@@ -66,7 +77,7 @@ class NotesList extends Component {
           renderItem={({ item }) => this.renderItem(item)}
           contentContainerStyle={styles.listContainer}
         />
-      </SafeAreaView>
+      </ScrollView>
     );
   }
 }
